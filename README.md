@@ -1,4 +1,4 @@
-** WORK IN PROGRESS **
+**WORK IN PROGRESS**
 # Convert Video to Audio and Store it in Cloud Object Storage
 
 In this code pattern, we will convert video files to audio files using an open-source library **FFMPEG** and store it in **Cloud Object Storage.** 
