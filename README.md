@@ -36,32 +36,6 @@ When you have completed this code pattern, you will understand how to:
 
 # Steps
 
-Use the **Deploy to IBM Cloud** button **OR** create the services and run locally.
-
-<!--Optionally, add a deploy to ibm cloud button-->
-
-## Deploy to IBM Cloud
-
-[![Deploy to IBM Cloud](https://cloud.ibm.com/deploy/button.png)](https://cloud.ibm.com/deploy?repository=https://github.com/IBM/watson-banking-chatbot.git)
-
-1. Press **Deploy to IBM Cloud**, and then click **Deploy**.
-
-<!--optional step-->
-2. In Toolchains, click **Delivery Pipeline** to watch while the app is deployed. After it's deployed, the app can be viewed by clicking **View app**.
-![toolchain pipeline](doc/source/images/toolchain-pipeline.png)
-
-<!--update with service names from manifest.yml-->
-
-3. To see the app and services created and configured for this code pattern, use the IBM Cloud dashboard. The app is named `watson-banking-chatbot` with a unique suffix. The following services are created and easily identified by the `wbc-` prefix:
-    * `wbc-conversation-service`
-    * `wbc-discovery-service`
-    * `wbc-natural-language-understanding-service`
-    * `wbc-tone-analyzer-service`
-
-## Run locally
-
-> NOTE: These steps are only needed when running locally instead of using the **Deploy to IBM Cloud** button.
-
 1. [Clone the repo](#1-clone-the-repo).
 2. [Create Cloud Object Storage Service](#2-create-cloud-object-storage-service).
 3. [Add the Credentials to the Application](#3-add-the-credentials-to-the-application).
