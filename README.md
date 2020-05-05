@@ -1,6 +1,6 @@
 # Convert Video to Audio and Store it in Cloud Object Storage
 
-In this code pattern, we will convert videos to audio using an open-source library **FFMPEG**. 
+In this code pattern, we will convert videos to audio using an open-source library **FFMPEG** and store it in **Cloud Object Storage.** 
 
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
 
