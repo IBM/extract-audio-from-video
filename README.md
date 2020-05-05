@@ -39,8 +39,7 @@ When you have completed this code pattern, you will understand how to:
 1. [Clone the repo](#1-clone-the-repo).
 2. [Create Cloud Object Storage Service](#2-create-cloud-object-storage-service).
 3. [Add the Credentials to the Application](#3-add-the-credentials-to-the-application).
-4. [Run the Application with Docker](#4-run-the-application-with-docker).
-5. [Run the Application without Docker](#5-run-the-application-without-docker).
+4. [Run the Application](#4-run-the-application).
 
 
 ### 1. Clone the repo
