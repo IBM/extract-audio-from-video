@@ -8,10 +8,8 @@ The basic idea is to extract textual insights from a video recording using watso
 
 When you have completed this code pattern, you will understand how to:
 
-* [goal 1]
-* [goal 2]
-* [goal 3]
-* [goal 4]
+* Connect applications directly to Cloud Object Storage.
+* Use other IBM Cloud Services and open-source tools with your data.
 
 <!--add an image in this path-->
 ![architecture](doc/source/images/architecture.png)
@@ -114,7 +112,7 @@ $ python app.py
 
 </details>
 
-# Sample output
+# Output
 
 ![sample_output](doc/source/images/sample-output.png)
 
