@@ -120,9 +120,22 @@ $ python app.py
 
 Convert the Video and Store it in Cloud Object Storage in just 3 steps:
 
-1. Upload the Video file.
+1. Upload the Videos file `earnings-call-train-data.mp4`, `earnings-call-test-data.mp4` & `earnings-call-Q-and-A.mp4` from the `data` directory.
+
 2. Convert the Video file.
 3. Play the Audio file from Cloud Object Storage.
+
+More About the dataset:
+For the code pattern demonstration, we have considered `IBM Earnings Call Q1 2019` Webex recording. The data has 40min of IBM Revenue discussion, and 20+ min of Q & A at the end of the recording. We have split the data into 3 parts:
+
+- `earnings-call-train-data.mp4` - (Duration - 24:40)
+This is the initial part of the discussion from the recording which we will be using to train the custom Watson Speech To Text model in the second code pattern from the series.
+
+- `earnings-call-test-data.mp4` - (Duration - 36:08)
+This is the full discussion from the recording which will be used to test the custom Speech To Text model and also to get transcript for further analysis in the third code patten from the series.
+
+- `earnings-call-Q-and-A.mp4` - (Duration - 2:40)
+This is a part of Q & A's asked at the end of the meeting. The purpose of this data is to demonstrate how Watson Speech To Text can detect different speakers from an audio which will be demonstrated in the second code pattern from the series.
 
 <!-- keep this -->
 ## License
