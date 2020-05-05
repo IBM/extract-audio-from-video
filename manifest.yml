@@ -1,0 +1,4 @@
+  applications:
+  - name: video-to-audio-cos
+    random-route: true
+    memory: 256M

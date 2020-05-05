@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>convert video to audio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/carbon-components/css/carbon-components.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
+</head>
+
+<body>
+    <nav class="bx--header">
+        <a class="bx--header__name" href="javascript:void(0)" title="">
+            <span class="bx--header__name--prefix">
+                Convert
+                &nbsp;
+            </span> Video to Audio
+        </a>
+    </nav>
+
+    <div class="custom-container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Convert Video to Audio<br> and store it in Cloud Object Storage</h2>
+                <br>
+                <br>
+            </div>
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-3" id="toast">
+                <div data-notification class="bx--toast-notification bx--toast-notification--info" role="alert">
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--toast-notification__icon" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true">
+                        <path
+                            d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,7Zm4,17.12H12V21.88h2.88V15.12H13V12.88h4.13v9H20Z">
+                        </path>
+                    </svg>
+                    <div class="bx--toast-notification__details">
+                        <h3 class="bx--toast-notification__title">Cloud Object Storage</h3>
+                        <p class="bx--toast-notification__subtitle" id="cosNotify">connecting ...</p>
+                    </div>
+                    <button data-notification-btn class="bx--toast-notification__close-button" type="button" aria-label="close">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--toast-notification__close-icon" width="20"
+                            height="20" viewBox="0 0 32 32" aria-hidden="true">
+                            <path
+                                d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4 14.6 16 8 22.6 9.4 24 16 17.4 22.6 24 24 22.6 17.4 16 24 9.4z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <h4>Step 1</h4>
+                <div class="bx--form-item">
+                    <strong class="bx--file--label">Upload Video file(s) here</strong>
+                    <p class="bx--label-description">500MB max file size.</p>
+                    <form enctype="multipart/form-data">
+                        <div class="bx--file" data-file data-file-demo-state-manager>
+                            <label for="file-uploader" class="bx--file-browse-btn" role="button" tabindex="0">
+                                <div data-file-drop-container class="bx--file__drop-container"> Drag and drop files
+                                    here or click here to upload
+                                    <input type="file" class="bx--file-input" id="file-uploader" name="video"
+                                        accept="video/*" data-file-uploader data-target="[data-file-container]"
+                                        multiple />
+                                </div>
+                            </label>
+                            <div data-file-container id="myFiles" name="myFiles" class="bx--file-container">
+
+                            </div>
+                            <br>
+                            <div class="bx--btn-set">
+                                <div>
+                                    <button class="bx--btn bx--btn--primary" id="Upload" name="Upload" value="Upload" type="button">Upload
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--btn__icon" width="16" height="16" viewBox="0 0 32 32"
+                                            aria-hidden="true">
+                                            <path d="M5 6.6l1.2 1.1L11 3v13h2V3l4.8 4.7L19 6.6 12 0z"></path>
+                                            <path d="M22 14v6H2v-6H0v10H24V14z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div id="uploaded">
+                                    <div class="bx--file__selected-file">
+                                        <p class="bx--file-filename">File(s) uploaded</p>
+                                        <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                                            <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                                style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                                class="bx--file-complete" width="16" height="16" viewBox="0 0 16 16"
+                                                aria-hidden="true">
+                                                <path
+                                                    d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7s7-3.1,7-7C15,4.1,11.9,1,8,1z M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z">
+                                                </path>
+                                                <path d="M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z"
+                                                    data-icon-path="inner-path" opacity="0"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="uploading">
+                                    <div class="bx--file__selected-file">
+                                        <p class="bx--file-filename">Uploading file(s)</p>
+                                        <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                                            <div class="bx--inline-loading__animation">
+                                                <div data-inline-loading-spinner=""
+                                                    class="bx--loading bx--loading--small">
+                                                    <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+                                                        <circle class="bx--loading__background" cx="0" cy="0"
+                                                            r="26.8125">
+                                                        </circle>
+                                                        <circle class="bx--loading__stroke" cx="0" cy="0" r="26.8125">
+                                                        </circle>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div id="error">
+                                <div class="bx--file__selected-file bx--file__selected-file--invalid" data-invalid>
+                                    <p class="bx--file-filename">Error uploading file(s)</p>
+                                    <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--file--invalid" width="16" height="16" viewBox="0 0 16 16"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M8,1C4.2,1,1,4.2,1,8s3.2,7,7,7s7-3.1,7-7S11.9,1,8,1z M7.5,4h1v5h-1C7.5,9,7.5,4,7.5,4z M8,12.2 c-0.4,0-0.8-0.4-0.8-0.8s0.3-0.8,0.8-0.8c0.4,0,0.8,0.4,0.8,0.8S8.4,12.2,8,12.2z">
+                                            </path>
+                                            <path
+                                                d="M7.5,4h1v5h-1C7.5,9,7.5,4,7.5,4z M8,12.2c-0.4,0-0.8-0.4-0.8-0.8s0.3-0.8,0.8-0.8 c0.4,0,0.8,0.4,0.8,0.8S8.4,12.2,8,12.2z"
+                                                data-icon-path="inner-path" opacity="0"></path>
+                                        </svg>
+                                    </span>
+                                    <div class="bx--form-requirement">
+                                        <div class="bx--form-requirement__title">Either no File is selected or File size exceeds limit.</div>
+                                        <p class="bx--form-requirement__supplement">500 MB max file size. Select a new file and try again.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h4>Step 2</h4>
+                <div class="bx--form-item">
+                    <strong class="bx--file--label">Convert Video file(s) to Audio</strong>
+                    <p class="bx--label-description">The video file(s) will be converted to <strong>.flac</strong> format.
+                    </p>
+                    <div class="bx--btn-set">
+                        <button class="bx--btn bx--btn--ghost bx--btn--sm" id="clickBtn1" onclick="getUploadedFiles()" type="button">Click to Refresh
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16"
+                                viewBox="0 0 32 32" aria-hidden="true">
+                                <path
+                                    d="M12 10H6.78A11 11 0 0 1 27 16h2A13 13 0 0 0 6 7.68V4H4v8h8zM20 22h5.22A11 11 0 0 1 5 16H3a13 13 0 0 0 23 8.32V28h2V20H20z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="refresh">
+                        <div data-inline-loading class="bx--inline-loading" role="alert" aria-live="assertive">
+                            <div class="bx--inline-loading__animation">
+                                <div data-inline-loading-spinner class="bx--loading bx--loading--small">
+                                    <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+                                        <circle class="bx--loading__background" cx="0" cy="0" r="26.8125" />
+                                        <circle class="bx--loading__stroke" cx="0" cy="0" r="26.8125" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <p data-inline-loading-text-active class="bx--inline-loading__text">Refreshing...</p>
+                        </div>
+                    </div>
+                    <br>
+                    <table class="bx--data-table  bx--data-table--compact " id="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <!-- checkbox th -->
+                                    <!-- sortable th  -->
+                                    <span class="bx--table-header-label">File Name</span>
+                                </th>
+                                <th>
+                                    <!-- checkbox th -->
+                                    <!-- sortable th  -->
+                                    <span class="bx--table-header-label">Size</span>
+                                </th>
+                                <th>
+                                    <span class="bx--table-header-label">Type</span>
+                                </th>
+                                <th>
+                                    <span class="bx--table-header-label">Delete</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <br>
+
+                    <div class="bx--btn-set">
+                        <div id="convertButton">
+                            <button class="bx--btn bx--btn--primary" id="Convert" onclick="convert()" name="Convert" value="Convert" type="button">Convert
+                                <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                    style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                    class="bx--btn__icon" width="16" height="16" viewBox="0 0 32 32" aria-hidden="true">
+                                    <path
+                                        d="M25,4H10A2.002,2.002,0,0,0,8,6V20.5563A3.9551,3.9551,0,0,0,6,20a4,4,0,1,0,4,4V12H25v8.5562A3.9545,3.9545,0,0,0,23,20a4,4,0,1,0,4,4V6A2.0023,2.0023,0,0,0,25,4ZM6,26a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,6,26Zm17,0a2,2,0,1,1,2-2A2.0027,2.0027,0,0,1,23,26ZM10,6H25v4H10Z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="converted">
+                            <div class="bx--file__selected-file">
+                                <p class="bx--file-filename">File(s) converted</p>
+                                <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                                    <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                        style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                        class="bx--file-complete" width="16" height="16" viewBox="0 0 16 16"
+                                        aria-hidden="true">
+                                        <path
+                                            d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7s7-3.1,7-7C15,4.1,11.9,1,8,1z M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z">
+                                        </path>
+                                        <path d="M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z"
+                                            data-icon-path="inner-path" opacity="0"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="converting">
+                            <div class="bx--file__selected-file">
+                                <p class="bx--file-filename">Converting file(s)</p>
+                                <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
+                                    <div class="bx--inline-loading__animation">
+                                        <div data-inline-loading-spinner="" class="bx--loading bx--loading--small">
+                                            <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+                                                <circle class="bx--loading__background" cx="0" cy="0" r="26.8125">
+                                                </circle>
+                                                <circle class="bx--loading__stroke" cx="0" cy="0" r="26.8125">
+                                                </circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <h4>Step 3</h4>
+                <div class="bx--form-item">
+                    <strong class="bx--file--label">Play the Audio file(s) from Cloud Object Storage</strong>
+                    <p class="bx--label-description">The audio file(s) are read directly from cloud object storage</p>
+                </div>
+                <div class="bx--btn-set">
+                    <button class="bx--btn bx--btn--ghost bx--btn--sm" id="clickBtn2" onclick="getConvertedFiles()" type="button">Click
+                        to Refresh
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16"
+                            viewBox="0 0 32 32" aria-hidden="true">
+                            <path
+                                d="M12 10H6.78A11 11 0 0 1 27 16h2A13 13 0 0 0 6 7.68V4H4v8h8zM20 22h5.22A11 11 0 0 1 5 16H3a13 13 0 0 0 23 8.32V28h2V20H20z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="refresh2">
+                    <div data-inline-loading class="bx--inline-loading" role="alert" aria-live="assertive">
+                        <div class="bx--inline-loading__animation">
+                            <div data-inline-loading-spinner class="bx--loading bx--loading--small">
+                                <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+                                    <circle class="bx--loading__background" cx="0" cy="0" r="26.8125" />
+                                    <circle class="bx--loading__stroke" cx="0" cy="0" r="26.8125" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p data-inline-loading-text-active class="bx--inline-loading__text">Refreshing...</p>
+                    </div>
+                </div>
+                <br>
+                <table class="bx--data-table  bx--data-table--compact " id="table2">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="bx--table-header-label">File Name</span>
+                            </th>
+                            <th>
+                                <span class="bx--table-header-label">Size</span>
+                            </th>
+                            <th>
+                                <span class="bx--table-header-label">Type</span>
+                            </th>
+                            <th>
+                                <span class="bx--table-header-label">Delete</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <br>
+
+                <div id="audio" name="audio">
+
+                </div>
+            </div>
+        </div>
+
+
+</body>
+<script src="static/carbon-components/scripts/carbon-components.min.js"></script>
+<script src="static/javascript/script.js"></script>
+
+</html>
