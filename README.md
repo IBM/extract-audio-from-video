@@ -1,4 +1,4 @@
-# Convert Video to Audio and Store it in Cloud Object Storage
+# Extract Audio from Video and Store it in Cloud Object Storage
 
 In this code pattern, we will convert videos to audio using an open-source library **FFMPEG** and store it in **Cloud Object Storage.** 
 
@@ -18,13 +18,15 @@ When you have completed this code pattern, you will understand how to:
 ## Flow
 
 1. User uploads video file to the application.
-2. The FFMPEG library converts the video file to audio file.
-3. The converted audio file is finally stored in Cloud Object Storage.
+2. The FFMPEG library extracts the audio from the video.
+3. The extracted audio file is stored in Cloud Object Storage.
 
 <!--Optionally, update this section when the video is created-->
 # Watch the Video
 
-[![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg)
+Coming Soon!
+
+<!-- [![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg) -->
 
 # Pre-requisites
 
@@ -116,12 +118,15 @@ $ python app.py
 
 ![sample_output](doc/source/images/sample-output.png)
 
-Convert the Video and Store it in Cloud Object Storage in just 3 steps:
+Extract the Audio and Store it in Cloud Object Storage in just 3 steps:
 
-1. Upload the Videos file `earnings-call-train-data.mp4`, `earnings-call-test-data.mp4` & `earnings-call-Q-and-A.mp4` from the `data` directory.
+1. Upload the Videos file `earnings-call-train-data.mp4`, `earnings-call-test-data.mp4` & `earnings-call-Q-and-A.mp4` from the `data` directory and click on `Upload` button.
 
-2. Convert the Video file.
-3. Play the Audio file from Cloud Object Storage.
+2. Click on `Convert` button to extract the audio.
+
+3. Download the `earnings-call-test-data.flac` & `earnings-call-Q-and-A.flac` as shown, it will be used in the second code pattern from the series.
+
+![](doc/source/images/download-data.gif)
 
 More About the dataset:
 For the code pattern demonstration, we have considered `IBM Earnings Call Q1 2019` Webex recording. The data has 40min of IBM Revenue discussion, and 20+ min of Q & A at the end of the recording. We have split the data into 3 parts:
