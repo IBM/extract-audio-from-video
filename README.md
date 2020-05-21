@@ -25,7 +25,9 @@ When you have completed this code pattern, you will understand how to:
 ## Flow
 
 1. User uploads video file to the application.
+
 2. The [FFMPEG](https://www.ffmpeg.org/) library extracts the audio from the video.
+
 3. The extracted audio file is stored in Cloud Object Storage.
 
 <!--Optionally, update this section when the video is created-->
@@ -38,15 +40,20 @@ Coming Soon!
 # Pre-requisites
 
 1. [IBM Cloud](https://cloud.ibm.com) Account.
+
 2. [Docker](https://www.docker.com/products/docker-desktop).
 
 
 # Steps
 
 1. [Clone the repo](#1-clone-the-repo).
+
 2. [Create Cloud Object Storage Service](#2-create-cloud-object-storage-service).
+
 3. [Add the Credentials to the Application](#3-add-the-credentials-to-the-application).
+
 4. [Deploy the Application](#4-deploy-the-application).
+
 5. [Run the Application](#5-run-the-application).
 
 
