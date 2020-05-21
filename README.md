@@ -1,11 +1,15 @@
 **Work in progress**
 # Extract Audio from Video and store it in Cloud Object Storage
 
-Description to start from What you are doing, why you are doing. Driving reasons behind them
-
-In this code pattern, we will convert video files to audio files using an open-source library **FFMPEG** and store it in **Cloud Object Storage.** 
-
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
+
+Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, Companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
+
+With the help of Technology, employees can continue to collaborate and be involved into their work with Virtual Meetings, Schools and teachers can continue to engage with their students through Virtual Classrooms.
+
+In this code pattern, we will extract audio from video and store it in Cloud Object Storage.
+
+Given a video recording of the virtual meeting or a virtual classroom, textual insights are extracted from them to better understand the key pointer and summary of the meeting or lecture.
 
 The basic idea is to extract textual insights from a video recording using watson services. Watson Natural Language Understanding and Watson Tone Analyzer can generate insights from Text, Watson Speech To Text can generate the text given an audio file. We have a video file as our source hence the first step is to convert the video to audio for further analysis.
 
