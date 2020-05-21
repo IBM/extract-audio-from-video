@@ -59,6 +59,7 @@ cos = ibm_boto3.resource("s3",
 @app.route('/initCOS')
 def initializeCOS():
     try:
+        flag = False
         buckets = cos.buckets.all()
         for bucket in buckets:
             if bucket_name == bucket.name:
