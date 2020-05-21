@@ -1,5 +1,7 @@
 **Work in progress**
-# Extract Audio from Video and Store it in Cloud Object Storage
+# Extract Audio from Video and store it in Cloud Object Storage
+
+Description to start from What you are doing, why you are doing. Driving reasons behind them
 
 In this code pattern, we will convert video files to audio files using an open-source library **FFMPEG** and store it in **Cloud Object Storage.** 
 
@@ -19,7 +21,7 @@ When you have completed this code pattern, you will understand how to:
 ## Flow
 
 1. User uploads video file to the application.
-2. The FFMPEG library extracts the audio from the video.
+2. The [FFMPEG](https://www.ffmpeg.org/) library extracts the audio from the video.
 3. The extracted audio file is stored in Cloud Object Storage.
 
 <!--Optionally, update this section when the video is created-->
@@ -40,12 +42,13 @@ Coming Soon!
 1. [Clone the repo](#1-clone-the-repo).
 2. [Create Cloud Object Storage Service](#2-create-cloud-object-storage-service).
 3. [Add the Credentials to the Application](#3-add-the-credentials-to-the-application).
-4. [Run the Application](#4-run-the-application).
+4. [Deploy the Application](#4-deploy-the-application).
+5. [Run the Application](#5-run-the-application).
 
 
 ### 1. Clone the repo
 
-Clone the `convert-video-to-audio` repo locally. In a terminal, run:
+Clone the [`convert-video-to-audio`](https://github.com/IBM/convert-video-to-audio) repo locally. In a terminal, run:
 
 ```bash
 $ git clone https://github.com/IBM/convert-video-to-audio
@@ -53,19 +56,22 @@ $ git clone https://github.com/IBM/convert-video-to-audio
 
 ### 2. Create Cloud Object Storage Service
 
+>NOTE: Create the Cloud Object Storage Service if not already created.
+
+
 - Create a [Cloud Object Storage Service](https://cloud.ibm.com/catalog/services/cloud-object-storage) on IBM Cloud.
 
 - In Cloud Object Storage Resource Page, Click on **Services Credentials**
 
 ![](doc/source/images/service-credentials.png)
 
-- Click on **New credential** and add a service credential as shown. Once the credential is created, copy the credential as it will be used in the next step.
+- Click on **New credential** and add a service credential as shown. Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
 
 ![](doc/source/images/create-cos-credentials.gif)
 
 ### 3. Add the Credentials to the Application
 
-- Open the **credentials.json** file and paste the credentials copied in [step 2](#2-create-cloud-object-storage-service) and finally save the file.
+- In the repo parent folder, open the **credentials.json** file and paste the credentials copied in [step 2](#2-create-cloud-object-storage-service) and finally save the file.
 
 ### 4. Run the Application
 
@@ -101,9 +107,17 @@ Other platform users can refer to the [ffmpeg documentation](https://www.ffmpeg.
 
 - Install the python libraries as follows:
 
-```bash
-$ pip install -r requirements.txt
-```
+    - change directory to repo parent folder
+    
+    ```bash
+    $ cd convert-video-to-audio/
+    ```
+
+    - use `python pip` to install the libraries
+
+    ```bash
+    $ pip install -r requirements.txt
+    ```
 
 - Finally run the application as follows:
 
@@ -115,17 +129,17 @@ $ python app.py
 
 </details>
 
-# Output
+### 5. Run the Application
 
 ![sample_output](doc/source/images/sample-output.png)
 
-Extract the Audio and Store it in Cloud Object Storage in just 3 steps:
+Now you can extract the audio and store it in Cloud Object Storage in just 3 steps:
 
-1. Upload the Videos file `earnings-call-train-data.mp4`, `earnings-call-test-data.mp4` & `earnings-call-Q-and-A.mp4` from the `data` directory and click on `Upload` button.
+1. Upload the Videos file `earnings-call-train-data.mp4`, `earnings-call-test-data.mp4` & `earnings-call-Q-and-A.mp4` from the `data` directory of the cloned repo and click on `Upload` button.
 
-2. Click on `Convert` button to extract the audio.
+2. Click on `Extract Audio` button to extract the audio.
 
-3. Download the `earnings-call-test-data.flac` & `earnings-call-Q-and-A.flac` as shown, it will be used in the second code pattern from the series.
+3. Download the `earnings-call-test-data.flac` & `earnings-call-Q-and-A.flac` as shown, it will be used in the [second code pattern](https://github.com/IBM/build-custom-stt-model-with-diarization) from the series.
 
 ![](doc/source/images/download-data.gif)
 
