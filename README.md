@@ -135,6 +135,8 @@ $ python app.py
 
 ### 5. Run the Application
 
+Visit  <http://localhost:8080> on your browser to run the application.
+
 ![sample_output](doc/source/images/sample-output.png)
 
 Now you can extract the audio and store it in Cloud Object Storage in just 3 steps:
