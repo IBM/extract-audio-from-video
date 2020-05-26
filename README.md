@@ -43,6 +43,7 @@ Coming Soon!
 
 2. [Docker](https://www.docker.com/products/docker-desktop).
 
+3. [Python](https://www.python.org/downloads/release/python-365/).
 
 # Steps
 
