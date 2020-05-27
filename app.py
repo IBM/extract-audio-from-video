@@ -89,6 +89,7 @@ def initializeCOS():
                 bucket_name = cred['bucket_name']
                 break
         if not flag:
+            bucket_name = cred['bucket_name']
             respo = create_bucket(bucket_name)
         else:
             respo = {"message": "Bucket \"" + bucket_name + "\" found!"}

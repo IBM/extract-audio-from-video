@@ -50,6 +50,14 @@ async function getCOSCredentials() {
             cosNotify.innerHTML = " ";
             cosNotify.innerHTML = temp[0] + ' ' + temp[1] + ' ' + "linked.";
             toast.style.display = "block";
+        } else if (temp[temp.length - 1] == "created!") {
+            setTimeout(function() {
+                cosNotify.innerHTML = " ";
+                cosNotify.innerHTML = "Reloading Please Wait ...";
+            }, 1000);
+            setTimeout(function() {
+                location.reload();
+            }, 5000);
         } else {
             cosNotify.innerHTML = " ";
             cosNotify.innerHTML = data.message;
