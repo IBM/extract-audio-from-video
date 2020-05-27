@@ -11,8 +11,6 @@ In this code pattern, we will extract audio from video and store it in Cloud Obj
 
 Given a video recording of the virtual meeting or a virtual classroom, textual insights are extracted from them to better understand the key pointer and summary of the meeting or lecture.
 
-The basic idea is to extract textual insights from a video recording using watson services. Watson Natural Language Understanding and Watson Tone Analyzer can generate insights from Text, Watson Speech To Text can generate the text given an audio file. We have a video file as our source hence the first step is to convert the video to audio for further analysis.
-
 When you have completed this code pattern, you will understand how to:
 
 * Connect applications directly to Cloud Object Storage.
