@@ -17,6 +17,10 @@ Extract audio from video and store it in cloud object storage
 
 * https://github.com/IBM/convert-video-to-audio/
 
+
+### Video Link
+* https://youtu.be/zbhDULZGJEE
+
 # Summary
 
 In this code pattern, given a video recording of the virtual meeting or a virtual classroom, we will extract textual insights from them to better understand the key pointer and summary of the meeting or lecture.
