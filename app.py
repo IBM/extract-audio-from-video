@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 import os
 from werkzeug import secure_filename
 import time
@@ -22,7 +22,7 @@ COS_API_KEY_ID = ""
 COS_AUTH_ENDPOINT = ""
 COS_RESOURCE_CRN = ""
 COS_BUCKET_LOCATION = "us-standard"
-bucket_name = "text-mining"
+bucket_name = ""
 
 '''Cloud Object Storage Methods'''
 
@@ -34,6 +34,12 @@ endpoints = requests.get(credentials.get('endpoints')).json()
 iam_host = (endpoints['identity-endpoints']['iam-token'])
 cos_host = (endpoints['service-endpoints']
             ['cross-region']['us']['public']['us-geo'])
+
+# Assign Bucket Name
+try:
+    bucket_name = credentials.get('bucket_name')
+except Exception as e:
+    bucket_name = "notassigned"
 
 # Constrict auth and cos endpoint
 auth_endpoint = "https://" + iam_host + "/oidc/token"
@@ -56,15 +62,34 @@ cos = ibm_boto3.resource("s3",
                          )
 
 
+@app.route('/COSBucket',  methods=['GET', 'POST'])
+def setupCOSBucket():
+    if request.method == 'POST':
+        temp = request.form
+        bkt = json.loads(temp['bkt'])
+        with open('credentials.json', 'r') as credentialsFile:
+            cred = json.loads(credentialsFile.read())
+        cred.update(bkt)
+        print(json.dumps(cred, indent=2))
+        with open('credentials.json', 'w') as fp:
+            json.dump(cred, fp,  indent=2)
+        return jsonify({'flag': 0})
+
 @app.route('/initCOS')
 def initializeCOS():
     try:
+        global bucket_name
+        flag = False
         buckets = cos.buckets.all()
+        with open('credentials.json', 'r') as credentialsFile:
+            cred = json.loads(credentialsFile.read())
         for bucket in buckets:
-            if bucket_name == bucket.name:
+            if cred['bucket_name'] == bucket.name:
                 flag = True
+                bucket_name = cred['bucket_name']
                 break
         if not flag:
+            bucket_name = cred['bucket_name']
             respo = create_bucket(bucket_name)
         else:
             respo = {"message": "Bucket \"" + bucket_name + "\" found!"}

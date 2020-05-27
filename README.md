@@ -1,17 +1,20 @@
-# Convert Video to Audio and Store it in Cloud Object Storage
-
-In this code pattern, we will convert videos to audio using an open-source library **FFMPEG**. 
+**Work in progress**
+# Extract Audio from Video and store it in Cloud Object Storage
 
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
 
-The basic idea is to extract textual insights from a video recording using watson services. Watson Natural Language Understanding and Watson Tone Analyzer can generate insights from Text, Watson Speech To Text can generate the text given an audio file. We have a video file as our source hence the first step is to convert the video to audio for further analysis.
+Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, Companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
+
+With the help of Technology, employees can continue to collaborate and be involved into their work with Virtual Meetings, Schools and teachers can continue to engage with their students through Virtual Classrooms.
+
+In this code pattern, we will extract audio from video and store it in Cloud Object Storage.
+
+Given a video recording of the virtual meeting or a virtual classroom, textual insights are extracted from them to better understand the key pointer and summary of the meeting or lecture.
 
 When you have completed this code pattern, you will understand how to:
 
-* [goal 1]
-* [goal 2]
-* [goal 3]
-* [goal 4]
+* Connect applications directly to Cloud Object Storage.
+* Use other IBM Cloud Services and open-source tools with your data.
 
 <!--add an image in this path-->
 ![architecture](doc/source/images/architecture.png)
@@ -20,58 +23,40 @@ When you have completed this code pattern, you will understand how to:
 ## Flow
 
 1. User uploads video file to the application.
-2. The FFMPEG library converts the video file to audio file.
-3. The converted audio file is finally stored in Cloud Object Storage.
+
+2. The [FFMPEG](https://www.ffmpeg.org/) library extracts the audio from the video.
+
+3. The extracted audio file is stored in Cloud Object Storage.
 
 <!--Optionally, update this section when the video is created-->
 # Watch the Video
 
-[![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg)
+[![video](https://img.youtube.com/vi/zbhDULZGJEE/0.jpg)](https://www.youtube.com/watch?v=zbhDULZGJEE)
 
 # Pre-requisites
 
-1. [IBM Cloud](https://cloud.ibm.com) Account.
-2. [Docker](https://www.docker.com/products/docker-desktop).
+1. [IBM Cloud](https://cloud.ibm.com) Account
 
+2. [Docker](https://www.docker.com/products/docker-desktop)
+
+3. [Python](https://www.python.org/downloads/release/python-365/)
 
 # Steps
 
-Use the **Deploy to IBM Cloud** button **OR** create the services and run locally.
+1. [Clone the repo](#1-clone-the-repo)
 
-<!--Optionally, add a deploy to ibm cloud button-->
+2. [Create Cloud Object Storage Service](#2-create-cloud-object-storage-service)
 
-## Deploy to IBM Cloud
+3. [Add the Credentials to the Application](#3-add-the-credentials-to-the-application)
 
-[![Deploy to IBM Cloud](https://cloud.ibm.com/deploy/button.png)](https://cloud.ibm.com/deploy?repository=https://github.com/IBM/watson-banking-chatbot.git)
+4. [Deploy the Application](#4-deploy-the-application)
 
-1. Press **Deploy to IBM Cloud**, and then click **Deploy**.
-
-<!--optional step-->
-2. In Toolchains, click **Delivery Pipeline** to watch while the app is deployed. After it's deployed, the app can be viewed by clicking **View app**.
-![toolchain pipeline](doc/source/images/toolchain-pipeline.png)
-
-<!--update with service names from manifest.yml-->
-
-3. To see the app and services created and configured for this code pattern, use the IBM Cloud dashboard. The app is named `watson-banking-chatbot` with a unique suffix. The following services are created and easily identified by the `wbc-` prefix:
-    * `wbc-conversation-service`
-    * `wbc-discovery-service`
-    * `wbc-natural-language-understanding-service`
-    * `wbc-tone-analyzer-service`
-
-## Run locally
-
-> NOTE: These steps are only needed when running locally instead of using the **Deploy to IBM Cloud** button.
-
-1. [Clone the repo](#1-clone-the-repo).
-2. [Create Cloud Object Storage Service](#2-create-cloud-object-storage-service).
-3. [Add the Credentials to the Application](#3-add-the-credentials-to-the-application).
-4. [Run the Application with Docker](#4-run-the-application-with-docker).
-5. [Run the Application without Docker](#5-run-the-application-without-docker).
+5. [Run the Application](#5-run-the-application)
 
 
 ### 1. Clone the repo
 
-Clone the `convert-video-to-audio` repo locally. In a terminal, run:
+Clone the [`convert-video-to-audio`](https://github.com/IBM/convert-video-to-audio) repo locally. In a terminal, run:
 
 ```bash
 $ git clone https://github.com/IBM/convert-video-to-audio
@@ -79,19 +64,22 @@ $ git clone https://github.com/IBM/convert-video-to-audio
 
 ### 2. Create Cloud Object Storage Service
 
+>NOTE: Create the Cloud Object Storage Service if not already created.
+
+
 - Create a [Cloud Object Storage Service](https://cloud.ibm.com/catalog/services/cloud-object-storage) on IBM Cloud.
 
 - In Cloud Object Storage Resource Page, Click on **Services Credentials**
 
 ![](doc/source/images/service-credentials.png)
 
-- Click on **New credential** and add a service credential as shown. Once the credential is created, copy the credential as it will be used in the next step.
+- Click on **New credential** and add a service credential as shown. Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
 
 ![](doc/source/images/create-cos-credentials.gif)
 
 ### 3. Add the Credentials to the Application
 
-- Open the **credentials.json** file and paste the credentials copied in [step 2](#2-create-cloud-object-storage-service) and finally save the file.
+- In the repo parent folder, open the **credentials.json** file and paste the credentials copied in [step 2](#2-create-cloud-object-storage-service) and finally save the file.
 
 ### 4. Run the Application
 
@@ -127,9 +115,17 @@ Other platform users can refer to the [ffmpeg documentation](https://www.ffmpeg.
 
 - Install the python libraries as follows:
 
-```bash
-$ pip install -r requirements.txt
-```
+    - change directory to repo parent folder
+    
+    ```bash
+    $ cd convert-video-to-audio/
+    ```
+
+    - use `python pip` to install the libraries
+
+    ```bash
+    $ pip install -r requirements.txt
+    ```
 
 - Finally run the application as follows:
 
@@ -141,15 +137,68 @@ $ python app.py
 
 </details>
 
-# Sample output
+### 5. Run the Application
 
+- Visit  <http://localhost:8080> on your browser to run the application.
+
+- Enter a `Bucket Name` to get started.
+
+![bucket_name](doc/source/images/bucket-name.png)
 ![sample_output](doc/source/images/sample-output.png)
 
-Convert the Video and Store it in Cloud Object Storage in just 3 steps:
+- You can extract the audio and store it in Cloud Object Storage in just 3 steps:
 
-1. Upload the Video file.
-2. Convert the Video file.
-3. Play the Audio file from Cloud Object Storage.
+1. Upload the Videos file `earnings-call-train-data.mp4`, `earnings-call-test-data.mp4` & `earnings-call-Q-and-A.mp4` from the `data` directory of the cloned repo and click on `Upload` button.
+
+2. Click on `Extract Audio` button to extract the audio.
+
+3. Download the `earnings-call-test-data.flac` & `earnings-call-Q-and-A.flac` as shown, it will be used in the [second code pattern](https://github.com/IBM/build-custom-stt-model-with-diarization) from the series.
+
+![](doc/source/images/download-data.gif)
+
+More About the dataset:
+For the code pattern demonstration, we have considered `IBM Earnings Call Q1 2019` Webex recording. The data has 40min of IBM Revenue discussion, and 20+ min of Q & A at the end of the recording. We have split the data into 3 parts:
+
+- `earnings-call-train-data.mp4` - (Duration - 24:40)
+This is the initial part of the discussion from the recording which we will be using to train the custom Watson Speech To Text model in the second code pattern from the series.
+
+- `earnings-call-test-data.mp4` - (Duration - 36:08)
+This is the full discussion from the recording which will be used to test the custom Speech To Text model and also to get transcript for further analysis in the third code patten from the series.
+
+- `earnings-call-Q-and-A.mp4` - (Duration - 2:40)
+This is a part of Q & A's asked at the end of the meeting. The purpose of this data is to demonstrate how Watson Speech To Text can detect different speakers from an audio which will be demonstrated in the second code pattern from the series.
+
+In the [next code pattern](https://github.com/IBM/build-custom-stt-model-with-diarization) we will learn how to train a custom Speech to Text model to transcribe the text from the extracted audio files.
+
+Thus Providing a set of open source tools, backed by IBM Cloud and Watson Services, will enable a better remote employee engagement pulse and will also enable educators to make content available for their students more easily.
+
+## Troubleshooting
+
+- CLIENT ERROR: An error occurred (BucketAlreadyExists) when calling the CreateBucket operation: Container textmining exists with a different storage location than requested.
+
+>This is a common error that occurs if the specified bucket name is already present in some storage location.
+
+![troubleshooting](doc/source/images/troubleshooting.png)
+
+- In the repo parent folder, open the **credentials.json** file and delete the `bucket_name` from the json file and refresh the application. Use a different bucket name instead.
+
+<pre><code>{
+  "apikey": "*****",
+  "cos_hmac_keys": {
+    "access_key_id": "*****",
+    "secret_access_key": "*****"
+  },
+  "endpoints": "*****",
+  "iam_apikey_description": "*****",
+  "iam_apikey_name": "*****",
+  "iam_role_crn": "*****",
+  "iam_serviceid_crn": "*****",
+  "resource_instance_id": "*****"<b><i><s>,
+  "bucket_name": "text-mining"</s></i></b>
+}
+</code></pre>
+
+>NOTE: Make sure to delete the `,` at the end of `resource_instance_id` as it its a json file.
 
 <!-- keep this -->
 ## License
