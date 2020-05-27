@@ -16,7 +16,7 @@
 
 <body>
     <nav class="bx--header">
-        <a class="bx--header__name" href="javascript:void(0)" title="">
+        <a class="bx--header__name" href="https://developer.ibm.com/patterns/" title="">
             <span class="bx--header__name--prefix">
                 IBM
                 &nbsp;
@@ -159,8 +159,10 @@
             <div class="col-sm-4">
                 <h4>Step 2</h4>
                 <div class="bx--form-item">
-                    <strong class="bx--file--label">Convert Video file(s) to Audio</strong>
-                    <p class="bx--label-description">The video file(s) will be converted to <strong>.flac</strong> format.
+                    <strong class="bx--file--label">Extract Audio from Video file(s)</strong>
+                    <p class="bx--label-description">The audio file(s) will be saved with <strong>.flac</strong> format.
+                    </p>
+                    <p class="bx--label-description">Locally the Video file(s) can be found at <code>/static/raw/</code> directory.
                     </p>
                     <div class="bx--btn-set">
                         <button class="bx--btn bx--btn--ghost bx--btn--sm" id="clickBtn1" onclick="getUploadedFiles()" type="button">Click to Refresh
@@ -216,7 +218,7 @@
 
                     <div class="bx--btn-set">
                         <div id="convertButton">
-                            <button class="bx--btn bx--btn--primary" id="Convert" onclick="convert()" name="Convert" value="Convert" type="button">Extract Audio
+                            <button class="bx--btn bx--btn--primary" id="Convert" onclick="convert()" name="Convert" value="Convert" type="button">Convert
                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet"
                                     style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
                                     class="bx--btn__icon" width="16" height="16" viewBox="0 0 32 32" aria-hidden="true">
@@ -228,7 +230,7 @@
                         </div>
                         <div id="converted">
                             <div class="bx--file__selected-file">
-                                <p class="bx--file-filename">File(s) converted</p>
+                                <p class="bx--file-filename">Audio extracted from File(s)</p>
                                 <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
                                     <svg focusable="false" preserveAspectRatio="xMidYMid meet"
                                         style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
@@ -245,7 +247,7 @@
                         </div>
                         <div id="converting">
                             <div class="bx--file__selected-file">
-                                <p class="bx--file-filename">Converting file(s)</p>
+                                <p class="bx--file-filename">Extracting audio please wait ...</p>
                                 <span data-for="prepopulated-file-uploader" class="bx--file__state-container">
                                     <div class="bx--inline-loading__animation">
                                         <div data-inline-loading-spinner="" class="bx--loading bx--loading--small">
@@ -267,7 +269,8 @@
                 <h4>Step 3</h4>
                 <div class="bx--form-item">
                     <strong class="bx--file--label">Play the Audio file(s) from Cloud Object Storage</strong>
-                    <p class="bx--label-description">The audio file(s) are read directly from cloud object storage</p>
+                    <p class="bx--label-description">Locally the Audio file(s) can be found at <code>/static/audios/</code> directory.
+                    </p>
                 </div>
                 <div class="bx--btn-set">
                     <button class="bx--btn bx--btn--ghost bx--btn--sm" id="clickBtn2" onclick="getConvertedFiles()" type="button">Click
@@ -321,6 +324,44 @@
                 <div id="audio" name="audio">
 
                 </div>
+            </div>
+            <button class="bx--btn bx--btn--primary" style="display: none;" id="showModal" type="button" data-modal-target="#modal-pyu0ribosn">Show
+    modal</button>
+            <div data-modal id="modal-pyu0ribosn" class="bx--modal " role="dialog" aria-modal="true" aria-labelledby="modal-pyu0ribosn-label" aria-describedby="modal-pyu0ribosn-heading" tabindex="-1">
+                <div class="bx--modal-container">
+                    <div class="bx--modal-header">
+                        <p class="bx--modal-header__heading bx--type-beta" id="modal-pyu0ribosn-heading">Cloud Object Storage Configuration
+                        </p>
+                        <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal">
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16"
+                    viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z">
+                    </path>
+                </svg>
+            </button>
+                    </div>
+
+                    <!-- Note: Modals with content that scrolls, at any viewport, requires `tabindex="0"` on the `bx--modal-content` element -->
+
+                    <div class="bx--modal-content bx--modal-content--with-form">
+                        <div class="bx--form-item">
+                            <label for="text-input-pyu0ribosn" class="bx--label">Bucket Name</label>
+                            <input id="bucket-name-setup" type="text" class="bx--text-input" placeholder="Enter a bucket name" data-modal-primary-focus>
+                            <br>
+                            <label>NOTE: Only use lowercase or uppercase letters, Do not give blank spaces or use and special character like <code>_</code><code>,</code><code>$</code>etc ...</label>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="bx--modal-content--overflow-indicator"></div>
+
+                    <div class="bx--modal-footer">
+                        <button class="bx--btn bx--btn--primary" id="cos-bkt" name="cos-bkt" type="button" onclick="setupCOS()" data-modal-close>Create a Bucket</button>
+                    </div>
+                </div>
+                <!-- Note: focusable span allows for focus wrap feature within Modals -->
+                <span tabindex="0"></span>
             </div>
         </div>
 
