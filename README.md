@@ -39,23 +39,23 @@ Coming Soon!
 
 # Pre-requisites
 
-1. [IBM Cloud](https://cloud.ibm.com) Account.
+1. [IBM Cloud](https://cloud.ibm.com) Account
 
-2. [Docker](https://www.docker.com/products/docker-desktop).
+2. [Docker](https://www.docker.com/products/docker-desktop)
 
-3. [Python](https://www.python.org/downloads/release/python-365/).
+3. [Python](https://www.python.org/downloads/release/python-365/)
 
 # Steps
 
-1. [Clone the repo](#1-clone-the-repo).
+1. [Clone the repo](#1-clone-the-repo)
 
-2. [Create Cloud Object Storage Service](#2-create-cloud-object-storage-service).
+2. [Create Cloud Object Storage Service](#2-create-cloud-object-storage-service)
 
-3. [Add the Credentials to the Application](#3-add-the-credentials-to-the-application).
+3. [Add the Credentials to the Application](#3-add-the-credentials-to-the-application)
 
-4. [Deploy the Application](#4-deploy-the-application).
+4. [Deploy the Application](#4-deploy-the-application)
 
-5. [Run the Application](#5-run-the-application).
+5. [Run the Application](#5-run-the-application)
 
 
 ### 1. Clone the repo
@@ -143,11 +143,14 @@ $ python app.py
 
 ### 5. Run the Application
 
-Visit  <http://localhost:8080> on your browser to run the application.
+- Visit  <http://localhost:8080> on your browser to run the application.
 
+- Enter a `Bucket Name` to get started.
+
+![bucket_name](doc/source/images/bucket-name.png)
 ![sample_output](doc/source/images/sample-output.png)
 
-Now you can extract the audio and store it in Cloud Object Storage in just 3 steps:
+- You can extract the audio and store it in Cloud Object Storage in just 3 steps:
 
 1. Upload the Videos file `earnings-call-train-data.mp4`, `earnings-call-test-data.mp4` & `earnings-call-Q-and-A.mp4` from the `data` directory of the cloned repo and click on `Upload` button.
 
@@ -168,6 +171,34 @@ This is the full discussion from the recording which will be used to test the cu
 
 - `earnings-call-Q-and-A.mp4` - (Duration - 2:40)
 This is a part of Q & A's asked at the end of the meeting. The purpose of this data is to demonstrate how Watson Speech To Text can detect different speakers from an audio which will be demonstrated in the second code pattern from the series.
+
+## Troubleshooting
+
+- CLIENT ERROR: An error occurred (BucketAlreadyExists) when calling the CreateBucket operation: Container textmining exists with a different storage location than requested.
+
+>This is a common error that occurs if the specified bucket name is already present in some storage location.
+
+![troubleshooting](doc/source/images/troubleshooting.png)
+
+- In the repo parent folder, open the **credentials.json** file and delete the `bucket_name` from the json file and refresh the application. Use a different bucket name instead.
+
+<pre><code>{
+  "apikey": "*****",
+  "cos_hmac_keys": {
+    "access_key_id": "*****",
+    "secret_access_key": "*****"
+  },
+  "endpoints": "*****",
+  "iam_apikey_description": "*****",
+  "iam_apikey_name": "*****",
+  "iam_role_crn": "*****",
+  "iam_serviceid_crn": "*****",
+  "resource_instance_id": "*****"<b><i><s>,
+  "bucket_name": "text-mining"</s></i></b>
+}
+</code></pre>
+
+>NOTE: Make sure to delete the `,` at the end of `resource_instance_id` as it its a json file.
 
 <!-- keep this -->
 ## License

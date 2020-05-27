@@ -9,7 +9,6 @@ Extract audio from video and store it in cloud object storage
 
 # Author
 * [Manoj Jahgirdar](https://www.linkedin.com/in/manoj-jahgirdar-6b5b33142/)
-* [Muralidhar Chavan](https://www.linkedin.com/in/muralidhar-chavan-3335b638/)
 * [Manjula Hosurmath](https://www.linkedin.com/in/manjula-g-hosurmath-0b47031)
 
 # URLs
