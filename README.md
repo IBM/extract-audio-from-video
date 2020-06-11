@@ -64,12 +64,9 @@ $ git clone https://github.com/IBM/convert-video-to-audio
 
 ### 2. Create Cloud Object Storage Service
 
->NOTE: Create the Cloud Object Storage Service if not already created.
+- Create a [Cloud Object Storage Service](https://cloud.ibm.com/catalog/services/cloud-object-storage) if not already created.
 
-
-- Create a [Cloud Object Storage Service](https://cloud.ibm.com/catalog/services/cloud-object-storage) on IBM Cloud.
-
-- In Cloud Object Storage Resource Page, Click on **Services Credentials**
+- In Cloud Object Dashboard, Click on **Services Credentials**
 
 ![](doc/source/images/service-credentials.png)
 
@@ -79,7 +76,7 @@ $ git clone https://github.com/IBM/convert-video-to-audio
 
 ### 3. Add the Credentials to the Application
 
-- In the repo parent folder, open the **credentials.json** file and paste the credentials copied in [step 2](#2-create-cloud-object-storage-service) and finally save the file.
+- In the repo parent folder, open the **credentials.json** file and paste the credentials copied in [step 2](#2-create-cloud-object-storage-service) and save the file.
 
 ### 4. Run the Application
 
