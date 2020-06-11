@@ -33,9 +33,9 @@ In this code pattern, Given a video recording of the virtual meeting or a virtua
 
 # Description
 
-Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, Companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
+Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
 
-With the help of Technology, employees can continue to collaborate and be involved into their work with Virtual Meetings, Schools and teachers can continue to engage with their students through Virtual Classrooms. These meetings are recorded, deriving insights from these recordings can be beneficial for the end users. Towards this goal, we will be extracting audio from video recordings which will be used for deriving insights.
+With the help of technology, employees can continue to collaborate and be involved into their work with virtual meetings, schools and teachers can continue to engage with their students through virtual classrooms. These meetings can be recorded and deriving insights from these recordings can be beneficial for the end users. Towards this goal, we will be extracting audio from video recordings which we will be used for deriving insights.
 
 # Flow
 
