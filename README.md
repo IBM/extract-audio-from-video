@@ -162,6 +162,12 @@ $ python app.py
 
 ![](doc/source/images/download-data.gif)
 
+### Summary
+
+We have seen how to extracted the audio from the video files and store the result in Cloud Object Storage. In the [next code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization) we will learn how to train a custom Speech to Text model to transcribe the text from the extracted audio files.
+
+Thus Providing a set of open source tools, backed by IBM Cloud and Watson Services, will enable a better remote employee engagement pulse and will also enable educators to make content available for their students more easily.
+
 ### More About the dataset
 For the code pattern demonstration, we have considered `IBM Earnings Call Q1 2019` Webex recording. The data has 40min of IBM Revenue discussion, and 20+ min of Q & A at the end of the recording. We have split the data into 3 parts:
 
@@ -173,10 +179,6 @@ This is the full discussion from the recording which will be used to test the cu
 
 - `earnings-call-Q-and-A.mp4` - (Duration - 2:40)
 This is a part of Q & A's asked at the end of the meeting. The purpose of this data is to demonstrate how Watson Speech To Text can detect different speakers from an audio which will be demonstrated in the second code pattern from the series.
-
-In the [next code pattern](https://github.com/IBM/build-custom-stt-model-with-diarization) we will learn how to train a custom Speech to Text model to transcribe the text from the extracted audio files.
-
-Thus Providing a set of open source tools, backed by IBM Cloud and Watson Services, will enable a better remote employee engagement pulse and will also enable educators to make content available for their students more easily.
 
 ## Troubleshooting
 
