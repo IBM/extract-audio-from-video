@@ -141,22 +141,25 @@ $ python app.py
 
 - Visit  <http://localhost:8080> on your browser to run the application.
 
+- You can extract the audio and store it in Cloud Object Storage in just 3 steps:
+
 - Enter a `Bucket Name` to get started.
 
 ![bucket_name](doc/source/images/bucket-name.png)
-![sample_output](doc/source/images/sample-output.png)
-
-- You can extract the audio and store it in Cloud Object Storage in just 3 steps:
 
 1. Upload the Videos file `earnings-call-train-data.mp4`, `earnings-call-test-data.mp4` & `earnings-call-Q-and-A.mp4` from the `data` directory of the cloned repo and click on `Upload` button.
 
+![step1](doc/source/images/step1.gif)
+
 2. Click on `Extract Audio` button to extract the audio.
+
+![step2](doc/source/images/step2.gif)
 
 3. Download the `earnings-call-test-data.flac` & `earnings-call-Q-and-A.flac` as shown, it will be used in the [second code pattern](https://github.com/IBM/build-custom-stt-model-with-diarization) from the series.
 
 ![](doc/source/images/download-data.gif)
 
-More About the dataset:
+### More About the dataset
 For the code pattern demonstration, we have considered `IBM Earnings Call Q1 2019` Webex recording. The data has 40min of IBM Revenue discussion, and 20+ min of Q & A at the end of the recording. We have split the data into 3 parts:
 
 - `earnings-call-train-data.mp4` - (Duration - 24:40)
