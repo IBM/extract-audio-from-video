@@ -1,4 +1,3 @@
-**Work in progress**
 # Extract Audio from Video and store it in Cloud Object Storage
 
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
