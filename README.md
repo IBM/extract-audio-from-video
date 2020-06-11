@@ -82,13 +82,19 @@ $ git clone https://github.com/IBM/convert-video-to-audio
 
 <details><summary><b>With Docker Installed</b></summary>
 
+- change directory to repo parent folder :
+    
+```bash
+$ cd convert-video-to-audio/
+```
+
 - Build the **Dockerfile** as follows :
 
 ```bash
 $ docker image build -t convert-video-to-audio .
 ```
 
-- once the dockerfile is built run the docker file as follows :
+- once the dockerfile is built run the dockerfile as follows :
 
 ```bash
 $ docker run -p 8080:8080 convert-video-to-audio
