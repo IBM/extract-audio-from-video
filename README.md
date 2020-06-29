@@ -2,9 +2,7 @@
 
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
 
-Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, Companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
-
-With the help of Technology, employees can continue to collaborate and be involved into their work with Virtual Meetings, Schools and teachers can continue to engage with their students through Virtual Classrooms.
+As part of the series which extracts insights from virtual meetings or classrooms, the very first step is to extract audio from video and store it in a common accessible storage space. In this code pattern, we will consider a video recording of a meeting, extract audio from that video file using open source library FFMPEG in a python flask runtime. FFMPEG is a complete, cross-platform solution to record, convert and stream audio and video. Lastly, we will store the extracted audio in IBM Cloud Object Storage. IBM Cloud Object Storage is a highly scalable cloud storage service, designed for high durability, resiliency and security. The stored audio files will be used for further processing to provide speaker diarization in the next code pattern of the series.
 
 In this code pattern, Given a video recording of the virtual meeting or a virtual classroom, we extract the audio from the video and store it in IBM Cloud Object Storage.
 
